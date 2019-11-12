@@ -9,28 +9,27 @@ always begin //generate clock
  clk = 0;
  #5ns;
 end
-counter
 
-cntr_name
- (.clk (clk),
- .reset (rst_n),
- .satEn (sat_enable),
- .output_data (counter_out));
+counter
+my_counter
+     (.clk (clk),
+     .reset (rst_n),
+     .satEn (sat_enable),
+     .output_data (counter_out));
 initial begin
 //Time 0
- $display("Sarting Testbench");
+ $display("Starting Testbench");
  sat_enable <= 0; //Set starting values
  rst_n <= 1;
  @(posedge clk); //First posedge occurred(10ns)
  rst_n <= 0;
- repeat(17) @(posedge clk); //Second posedge occurred(20ns)
+ repeat(17) @(posedge clk);
  sat_enable <= 1;
  @(posedge clk); //And so on...
- repeat(10) @(posedge clk);
+ repeat(11) @(posedge clk);
  sat_enable <= 0;
-
- repeat(6) @(posedge clk);
- 
+ repeat(3) @(posedge clk);
+ sat_enable <= 1;
  $display("Finished");
 end
 endmodule
