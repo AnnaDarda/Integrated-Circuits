@@ -11,12 +11,12 @@ if(reset)
 	else
 		if(!satEn)
 			sum<=sum+1;
-		else
+	else
 		if(satEn)begin
-				if(sum>=11)
-					sum<=11;
-				else
-					sum<=sum+1;
+			if(sum>=11)
+				sum<=11;
+			else
+				sum<=sum+1;
 
 		end
 
